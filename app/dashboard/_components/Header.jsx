@@ -1,24 +1,37 @@
+"use client";
 import React from 'react'
 import Image from 'next/image'
 import { UserButton } from '@clerk/nextjs'
+import { usePathname } from 'next/navigation';
 function Header() {
-  return (
+    
+    const path = usePathname();
+  
+    return (
     <div className = "flex p-4 items-center justify-between bg-secondary shadow-sm">
         <div class = "flex flex-row">
             <Image src = {'/logo.svg'} width={100} height={85} alt='logo'></Image>
             <div class="text-2xl p-4 font-bold">InterviewX</div>
         </div>
-        <ul className="flex gap-5">
-            <li className="hover:text-fuchsia-500 hover:font-bold transition cursor-pointer">
+        <ul className='flex gap-6 max-md:hidden'>
+            <li className={`hover:text-fuchsia-500 hover:font-bold transition cursor-pointer
+                ${path == '/dashboard' && 'text-fuchsia-500 font-bold underline'}    
+            `}>
                 Dashboard
             </li>
-            <li className="hover:text-fuchsia-500 hover:font-bold transition cursor-pointer">
+            <li className={`hover:text-fuchsia-500 hover:font-bold transition cursor-pointer
+                ${path == '/dashboard/questions' && 'text-fuchsia-500 font-bold underline'}    
+            `}>
                 Questions
             </li>
-            <li className="hover:text-fuchsia-500 hover:font-bold transition cursor-pointer">
+            <li className={`hover:text-fuchsia-500 hover:font-bold transition cursor-pointer
+                ${path == '/dashboard/upgrade' && 'text-fuchsia-500 font-bold underline'}    
+            `}>
                 Upgrade
             </li>
-            <li className="hover:text-fuchsia-500 hover:font-bold transition cursor-pointer">
+            <li className={`hover:text-fuchsia-500 hover:font-bold transition cursor-pointer
+                ${path == '/dashboard/how-it-works' && 'text-fuchsia-500 font-bold underline'}    
+            `}>
                 How it works
             </li>
         </ul>

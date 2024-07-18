@@ -68,7 +68,7 @@ export default function Page() {
           Master your interview skills with AI-powered coaching.
           </p>
         </div>
-        <SignIn />;
+        <SignIn />
         
       </div>
     </main>
