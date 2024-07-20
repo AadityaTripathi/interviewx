@@ -2,6 +2,7 @@ import { UserButton } from '@clerk/nextjs'
 import React from 'react'
 import { NewInterview } from './_components/NewInterview'
 function Dashboard() {
+
   return (
     <div className="p-10">
       <h2 className="font-bold text-2xl">Dashboard</h2>

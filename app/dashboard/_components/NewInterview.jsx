@@ -18,8 +18,8 @@ import { MockInterview } from '@/utils/schema';
 import { v4 as uuidv4} from 'uuid';
 import { useUser } from '@clerk/nextjs';
 import moment from 'moment/moment';
-
-
+import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation'
 export const NewInterview = () => {
     const [OpenDialog, setOpenDialog] = useState(false);
     const [jobPosition, setJobPosition] = useState();
@@ -29,7 +29,9 @@ export const NewInterview = () => {
     const [jsonResponse, setJsonResponse] = useState([]);
 
     const {user} = useUser();
-
+    const router = useRouter();
+    const path = usePathname();
+    console.log(path);
     const onSubmit = async(e) => {
         setLoadings(true);
         e.preventDefault();
@@ -58,8 +60,11 @@ export const NewInterview = () => {
             }).returning({mockId: MockInterview.mockId});
 
             console.log("Intered id", resp);
-            if(resp){
+            if(resp ){
                 setOpenDialog(false);
+                if(path != "/dashboard/interview/"+resp[0]?.mockId){
+                    router.push("/dashboard/interview/"+resp[0]?.mockId);
+                }
             }
         }else{
             console.log("No response from Gemini AI");
