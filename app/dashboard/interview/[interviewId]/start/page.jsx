@@ -34,7 +34,11 @@ const StartInterview = ({params}) => {
             mockInterviewQuestions = {mockInterviewQuestions}
             activeQuestionIndex = {activeQuestionIndex}></QuestionSection>
 
-            <RecordAnswerSection></RecordAnswerSection>
+            <RecordAnswerSection
+            mockInterviewQuestions = {mockInterviewQuestions}
+            activeQuestionIndex = {activeQuestionIndex}
+            interviewData = {interviewData}>
+            </RecordAnswerSection>
         </div>
     </div>
   )
