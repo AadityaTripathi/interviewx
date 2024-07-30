@@ -7,6 +7,8 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import QuestionSection from './_components/QuestionSection';
 import RecordAnswerSection from './_components/RecordAnswerSection';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const StartInterview = ({params}) => {
 
@@ -39,6 +41,16 @@ const StartInterview = ({params}) => {
             activeQuestionIndex = {activeQuestionIndex}
             interviewData = {interviewData}>
             </RecordAnswerSection>
+        </div>
+        <div className="flex justify-end gap-5">
+             {activeQuestionIndex > 0 && 
+             <Button onClick = {()=>setActiveQuestionIndex(activeQuestionIndex-1)}>Previous Question</Button>}
+            {activeQuestionIndex != mockInterviewQuestions?.length-1 && 
+            <Button onClick = {()=>setActiveQuestionIndex(activeQuestionIndex+1)}>Next Question</Button>}
+            {activeQuestionIndex == mockInterviewQuestions?.length-1 && 
+            <Link href = {'/dashboard/interview/'+interviewData?.mockId+'/feedback'}>
+            <Button>End Interview </Button>
+            </Link>}
         </div>
     </div>
   )
