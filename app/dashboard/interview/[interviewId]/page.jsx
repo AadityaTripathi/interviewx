@@ -53,8 +53,9 @@ const Interview = ({params}) => {
                     onUserMediaError={()=>setWebcamEnabled(false)}
                     mirrored = {true}
                     style = {{
-                        height:300,
-                        width:300
+                        height:400,
+                        width:500,
+                        margin: "0.8rem 0"
                     }}
                 ></Webcam>
                 :<>

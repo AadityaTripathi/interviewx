@@ -23,7 +23,11 @@ function InterviewList() {
         setInterviewList(result);
     }
 
-
+    if(interviewList.length == 0){
+        return(
+            <div></div>
+        )
+    }
   return (
     <div>
         <h2 className="font-medium text-xl">

@@ -15,6 +15,7 @@ import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 function feedback({params}) {
     const [feedbackList, setFeedbackList] = useState(); 
+    const [avgFeedback, setAvgFeedback] = useState();
     const router = useRouter();
     useEffect(()=>{
         GetFeedback();
@@ -26,6 +27,19 @@ function feedback({params}) {
         .orderBy(UserAnswer.id);
         setFeedbackList(result);
         console.log(result);
+
+        if(result?.length == 0){
+            setAvgFeedback(0);
+        }else{
+            let sum = 0;
+            for(let i = 0; i < result?.length; i++){
+                let rating = result[i].rating;
+                rating = rating[0];
+                sum += Number(rating);
+            }
+            let avg = sum / result?.length;
+            setAvgFeedback(avg);
+        }
     }
   return (
     <div className='p-10'>
@@ -34,7 +48,7 @@ function feedback({params}) {
         <h2 className="font-bold text-2xl mt-4">
             Below is feedback on your performance</h2>
         <h2 className="text-fuchsia-500 text-xl my-3">
-            Your overall interview rating: <strong>4/5</strong>
+            Your overall interview rating: <strong>{avgFeedback}/10</strong>
         </h2>
         <h2 className="text-lg">
             Find below all the interview questions with correct answers, 
@@ -47,7 +61,7 @@ function feedback({params}) {
                 <CollapsibleContent>
                     <div className="flex flex-col gap-2">
                         <h2 className="text-yellow-500 p-2 border rounded-lg">
-                            Rating: <strong>{item.rating}</strong></h2>
+                            Rating: <strong>{item.rating}/10</strong></h2>
                         <h2 className="p-2 rounded-lg bg-red-50 text-sm text-red-950">
                             <strong>Your Answer: </strong>{item.userAns}
                         </h2>

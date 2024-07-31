@@ -56,7 +56,7 @@ const RecordAnswerSection = ({mockInterviewQuestions, activeQuestionIndex, inter
         console.log(userAnswer);
         setLoading(true); 
         const feedbackPrompt = "Question:"+ mockInterviewQuestions[activeQuestionIndex]?.Question + 
-            ", User Answer: " + userAnswer + "Keeping in mind the given question and answer for a interview, give us rating for the answer and feedback as area of improvement, if any in just 3-5 lines to improve it. Give the response in JSON format with rating field and feedback field";
+            ", User Answer: " + userAnswer + "Keeping in mind the given question and answer for a interview, give us rating for the answer and feedback as area of improvement, if any in just 3-5 lines to improve it. Also the rating should be a number out of 10. If the rating you feel is 5 out of 10, send the response in the formate 5/10.Give the response in JSON format with rating field and feedback field";
 
             const result = await chatSession.sendMessage(feedbackPrompt);
             const mockJsonResponse = (result.response.text()).replace('```json', '').replace('```', '');
