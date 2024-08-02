@@ -1,11 +1,17 @@
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+"use client";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Home() {
+  const router = useRouter();
+  useEffect(()=>{
+    redirect();
+  },[]);
+  const redirect = () => {
+    router.push("/dashboard");
+  };
   return (
-    <div>jai shree ram
-      <Button>Hello</Button>
-
+    <div>
     </div>
   );
 }

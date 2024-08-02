@@ -19,7 +19,8 @@ function Header() {
             <div class="text-2xl p-4 font-bold">InterviewX</div>
         </div>
         <ul className='flex gap-6 max-md:hidden'>
-            <li className={`hover:text-fuchsia-500 hover:font-bold transition cursor-pointer
+            <li onClick={BackToHome}
+            className={`hover:text-fuchsia-500 hover:font-bold transition cursor-pointer
                 ${path == '/dashboard' && 'text-fuchsia-500 font-bold underline'}    
             `}>
                 Dashboard

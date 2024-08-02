@@ -61,7 +61,7 @@ function feedback({params}) {
                 <CollapsibleContent>
                     <div className="flex flex-col gap-2">
                         <h2 className="text-yellow-500 p-2 border rounded-lg">
-                            Rating: <strong>{item.rating}/10</strong></h2>
+                            Rating: <strong>{item.rating[0]}/10</strong></h2>
                         <h2 className="p-2 rounded-lg bg-red-50 text-sm text-red-950">
                             <strong>Your Answer: </strong>{item.userAns}
                         </h2>

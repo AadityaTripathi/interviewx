@@ -76,7 +76,7 @@ const RecordAnswerSection = ({mockInterviewQuestions, activeQuestionIndex, inter
             })
 
             if(resp){
-                toast("Answer saved successfully");
+                toast.success("Answer saved successfully");
                 setUserAnswer('');
                 setResults([]);
             }
