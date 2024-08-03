@@ -38,6 +38,7 @@ function feedback({params}) {
                 sum += Number(rating);
             }
             let avg = sum / result?.length;
+            avg = Math.round(avg);
             setAvgFeedback(avg);
         }
     }
