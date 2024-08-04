@@ -1,6 +1,11 @@
 import React from 'react'
 import Header from './_components/Header'
 
+export const metadata = {
+  title: 'InterviewX',
+  description:
+    'Mock AI interviewer',
+};
 function Dashboardlayout({children}) {
   return (
     <div>
